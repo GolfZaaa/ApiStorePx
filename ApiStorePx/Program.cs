@@ -1,3 +1,5 @@
+using ApiStorePx.Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.Filters;
 
@@ -5,7 +7,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DbConnection")
+    );
+});
+
 builder.Services.AddSwaggerGen(options =>
 {
     options.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
