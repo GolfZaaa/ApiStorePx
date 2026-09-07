@@ -20,10 +20,15 @@ namespace ApiStorePx.Services
             return await _context.Products.OrderBy(x => x.Name).ToListAsync();
         }
 
-        //sucessfully
         public async Task<Product> GetByIdAsync(int id)
         {
-            return await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+            var product = await _context.Products.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+
+            if(product == null)
+            {
+                return null;
+            }
+            return product;
         }
 
 

@@ -1,4 +1,6 @@
 using ApiStorePx.Data;
+using ApiStorePx.Services;
+using ApiStorePx.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
 using Swashbuckle.AspNetCore.Filters;
@@ -13,6 +15,9 @@ builder.Services.AddDbContext<DataContext>(options =>
         builder.Configuration.GetConnectionString("DbConnection")
     );
 });
+
+//ทำเพื่อให้สามารถเรียกใช้ ProductService ได้จาก Controller
+builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddSwaggerGen(options =>
 {
