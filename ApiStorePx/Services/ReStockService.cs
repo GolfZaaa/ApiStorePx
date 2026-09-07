@@ -1,6 +1,7 @@
 ﻿using ApiStorePx.Data;
 using ApiStorePx.DTOs.Stock;
 using ApiStorePx.Models;
+using ApiStorePx.Response;
 using ApiStorePx.Services.IServices;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,7 +16,7 @@ namespace ApiStorePx.Services
             _context = context;
         }
 
-        public async Task<Restock> CreateReStock(CreateReStockDto dto)
+        public async Task<ReStockResponseDto> CreateReStock(CreateReStockDto dto)
         {
             if (dto.PackCost <= 0)
                 throw new Exception("ราคาต่อแพ็คต้องมากกว่า 0");
@@ -102,7 +103,18 @@ namespace ApiStorePx.Services
 
             await _context.SaveChangesAsync();
 
-            return restock;
+            return new ReStockResponseDto
+            {
+                Id = restock.Id,
+                ProductId = restock.ProductId,
+                PackCost = restock.PackCost,
+                UnitPerPack = restock.UnitPerPack,
+                Packs = restock.Packs,
+                UnitCost = restock.UnitCost,
+                TotalUnits = restock.TotalUnits,
+                TotalCost = restock.TotalCost,
+                CreatedAt = restock.CreatedAt
+            };
         }
     }
 }
