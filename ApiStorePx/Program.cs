@@ -18,6 +18,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 //ทำเพื่อให้สามารถเรียกใช้ ProductService ได้จาก Controller
 builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IReStockService, ReStockService>();
 
 builder.Services.AddSwaggerGen(options =>
 {

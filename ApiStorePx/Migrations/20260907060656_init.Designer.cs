@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiStorePx.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20260905085456_Db")]
-    partial class Db
+    [Migration("20260907060656_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,8 +33,8 @@ namespace ApiStorePx.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AvgCost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("AvgCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreateAt")
                         .HasColumnType("datetime2");
@@ -43,8 +43,8 @@ namespace ApiStorePx.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SellPrice")
-                        .HasColumnType("int");
+                    b.Property<decimal>("SellPrice")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Stock")
                         .HasColumnType("int");
@@ -68,8 +68,8 @@ namespace ApiStorePx.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("PackCost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("PackCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("Packs")
                         .HasColumnType("int");
@@ -77,14 +77,14 @@ namespace ApiStorePx.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TotalCost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("TotalCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("TotalUnits")
                         .HasColumnType("int");
 
-                    b.Property<int>("UnitCost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("UnitCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<int>("UnitPerPack")
                         .HasColumnType("int");
@@ -104,8 +104,8 @@ namespace ApiStorePx.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("Cost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Cost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
@@ -113,11 +113,11 @@ namespace ApiStorePx.Migrations
                     b.Property<int>("PaymentMethod")
                         .HasColumnType("int");
 
-                    b.Property<int>("Profit")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Profit")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("Total")
-                        .HasColumnType("int");
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -145,11 +145,11 @@ namespace ApiStorePx.Migrations
                     b.Property<int>("SaleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("SellPrice")
-                        .HasColumnType("int");
+                    b.Property<decimal>("SellPrice")
+                        .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("UnitCost")
-                        .HasColumnType("int");
+                    b.Property<decimal>("UnitCost")
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
